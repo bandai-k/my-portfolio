@@ -66,7 +66,7 @@ export default function Home() {
                             description="スクラム開発チーム向けの見積もり支援アプリ。カードによる投票とリアルタイム集計が可能なUIを提供。"
                             techs={["React", "Redux Toolkit", "TypeScript", "Tailwind CSS"]}
                             image="/images/planning-poker.png"
-                            url="planning-poker-nu-cyan.vercel.app"
+                            url="https://planning-poker-nu-cyan.vercel.app/"
                             repo="https://github.com/youraccount/planning-poker"
                         />
                         <PortfolioCard
