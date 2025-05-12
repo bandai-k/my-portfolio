@@ -16,7 +16,7 @@ export default function Home() {
                         こんにちは、<span className="text-blue-600">Koki Bandai</span>です
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        フリーランスのフロントエンドエンジニアとして、React・Vue・TypeScript を中心にWebアプリ開発を行っています。
+                        React・Vue・TypeScript を中心にWebアプリ開発を行っています。スクラム開発が好きです。
                     </p>
                     <a
                         href="#contact"
@@ -67,7 +67,7 @@ export default function Home() {
                             techs={["React", "Redux Toolkit", "TypeScript", "Tailwind CSS"]}
                             image="/images/planning-poker.png"
                             url="https://planning-poker-nu-cyan.vercel.app/"
-                            repo="https://github.com/youraccount/planning-poker"
+                            repo="https://github.com/bandai-k/planning-poker"
                         />
                         <PortfolioCard
                             title="AI面接ツール"
@@ -90,32 +90,32 @@ export default function Home() {
                         <div className="text-center">
                             <FaEnvelope className="text-2xl mx-auto mb-1 text-blue-600" />
                             <p className="font-semibold text-gray-700">Email</p>
-                            <a href="mailto:yourmail@example.com" className="text-blue-600 hover:underline">
-                                yourmail@example.com
+                            <a href="mailto:bandai.apps@gmail.com" className="text-blue-600 hover:underline">
+                                bandai.apps@gmail.com
                             </a>
                         </div>
                         <div className="text-center">
                             <FaGithub className="text-2xl mx-auto mb-1 text-blue-600" />
                             <p className="font-semibold text-gray-700">GitHub</p>
-                            <a href="https://github.com/youraccount" className="text-blue-600 hover:underline">
-                                github.com/youraccount
+                            <a href="https://github.com/bandai-k" className="text-blue-600 hover:underline">
+                                github.com/bandai-k
                             </a>
                         </div>
                         <div className="text-center">
                             <FaTwitter className="text-2xl mx-auto mb-1 text-blue-600" />
                             <p className="font-semibold text-gray-700">X (Twitter)</p>
-                            <a href="https://twitter.com/youraccount" className="text-blue-600 hover:underline">
-                                @youraccount
+                            <a href="https://twitter.com/" className="text-blue-600 hover:underline">
+                                @準備中
                             </a>
                         </div>
                     </div>
                     <form
-                        action="https://formsubmit.co/yourmail@example.com"
+                        action="https://formsubmit.co/bandai.apps@gmail.com"
                         method="POST"
                         className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow space-y-4"
                     >
                         <input type="hidden" name="_captcha" value="false" />
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thanks" />
+                        <input type="hidden" name="_next" value="https://my-portfolio-kappa-three-23.vercel.app/thanks" />
 
                         <input
                             type="text"
