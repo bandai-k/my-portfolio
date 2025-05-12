@@ -3,6 +3,7 @@ import React from "react";
 import { Navbar } from "../components/Navbar";
 import Image from "next/image";
 import { FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { PortfolioCard } from "../components/PortfolioCard";
 
 export default function Home() {
     return (
@@ -59,21 +60,23 @@ export default function Home() {
                 {/* ポートフォリオ */}
                 <section id="portfolio">
                     <h2 className="text-3xl font-semibold mb-6 text-center">ポートフォリオ</h2>
-                    <div className="grid grid-cols-1 gap-4">
-                        <div className="border rounded-xl p-6 bg-white shadow hover:shadow-md transition">
-                            <h3 className="text-xl font-bold mb-2">プランニングポーカーアプリ</h3>
-                            <p className="text-gray-600 mb-2">
-                                スクラム開発の見積もり支援アプリ。React + Redux Toolkit + TypeScript + Tailwind CSS を使用。
-                            </p>
-                            <a
-                                href="https://yourapp.vercel.app"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
-                            >
-                                公開URLを見る →
-                            </a>
-                        </div>
+                    <div className="grid grid-cols-1 gap-6">
+                        <PortfolioCard
+                            title="プランニングポーカーアプリ"
+                            description="スクラム開発チーム向けの見積もり支援アプリ。カードによる投票とリアルタイム集計が可能なUIを提供。"
+                            techs={["React", "Redux Toolkit", "TypeScript", "Tailwind CSS"]}
+                            image="/images/planning-poker.png"
+                            url="https://planning-poker.vercel.app"
+                            repo="https://github.com/youraccount/planning-poker"
+                        />
+                        <PortfolioCard
+                            title="AI面接ツール"
+                            description="求職者とAIが会話形式で模擬面接を行うWebツール。ReactとTailwind CSSで構築し、音声認識とOpenAI APIを統合。現在開発中です。"
+                            techs={["React", "TypeScript", "Tailwind CSS", "OpenAI", "Web Speech API"]}
+                            image="/images/ai-interview-tool.png"
+                            url="#"
+                            isWIP={true}
+                        />
                     </div>
                 </section>
 
@@ -88,7 +91,7 @@ export default function Home() {
                             <FaEnvelope className="text-2xl mx-auto mb-1 text-blue-600" />
                             <p className="font-semibold text-gray-700">Email</p>
                             <a href="mailto:yourmail@example.com" className="text-blue-600 hover:underline">
-                                test@example.com
+                                yourmail@example.com
                             </a>
                         </div>
                         <div className="text-center">
@@ -107,7 +110,7 @@ export default function Home() {
                         </div>
                     </div>
                     <form
-                        action="https://formsubmit.co/bandai.apps@gmail.com"
+                        action="https://formsubmit.co/yourmail@example.com"
                         method="POST"
                         className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow space-y-4"
                     >
