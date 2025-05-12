@@ -1,5 +1,6 @@
-// pages/index.tsx（リッチUI版）
+// pages/index.tsx
 import React from "react";
+import Head from "next/head";
 import { Navbar } from "../components/Navbar";
 import Image from "next/image";
 import { FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
@@ -8,6 +9,17 @@ import { PortfolioCard } from "../components/PortfolioCard";
 export default function Home() {
     return (
         <>
+            <Head>
+                <title>Koki Bandai | フロントエンドエンジニア ポートフォリオ</title>
+                <meta name="description" content="フリーランスのフロントエンドエンジニアKoki Bandaiのポートフォリオ。React・TypeScript・Vueなどを用いた開発実績を紹介。" />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content="Koki Bandai | フロントエンドエンジニア ポートフォリオ" />
+                <meta property="og:description" content="React・TypeScript・Vue を活用したWebアプリ開発の実績を紹介するポートフォリオサイトです。" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://bandai-k.site" />
+                <meta property="og:image" content="https://bandai-k.site/images/og-image.png" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
             <Navbar />
             <main className="pt-24 px-6 max-w-4xl mx-auto text-gray-800 space-y-20">
                 {/* Hero セクション */}
@@ -37,16 +49,7 @@ export default function Home() {
                 <section id="skills">
                     <h2 className="text-3xl font-semibold mb-6 text-center">スキル</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
-                        {[
-                            "React",
-                            "Redux Toolkit",
-                            "TypeScript",
-                            "Vue 3",
-                            "Next.js",
-                            "Tailwind CSS",
-                            "Firebase",
-                            "Git / GitHub",
-                        ].map((skill) => (
+                        {["React", "Redux Toolkit", "TypeScript", "Vue 3", "Next.js", "Tailwind CSS", "Firebase", "Git / GitHub"].map((skill) => (
                             <div
                                 key={skill}
                                 className="bg-white border rounded-xl p-4 shadow hover:shadow-md transition"
