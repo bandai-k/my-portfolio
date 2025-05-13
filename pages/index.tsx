@@ -3,10 +3,58 @@ import React from "react";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
 import Image from "next/image";
-import { FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaTwitter,
+  FaEnvelope,
+  FaCode,
+  FaServer,
+  FaCloud,
+  FaTools,
+  FaMicrochip,
+  FaEnvelopeOpenText,
+} from "react-icons/fa";
 import { PortfolioCard } from "../components/PortfolioCard";
 
 export default function Home() {
+  const skillCategories = [
+    {
+      icon: <FaCode className="inline mr-2" />,
+      title: "フロントエンド",
+      skills: [
+        "React",
+        "Redux Toolkit",
+        "TypeScript",
+        "Vue 2",
+        "Vue 3",
+        "Next.js",
+        "Tailwind CSS",
+        "HTML / CSS",
+        "JavaScript",
+      ],
+    },
+    {
+      icon: <FaServer className="inline mr-2" />,
+      title: "バックエンド・API",
+      skills: ["Node.js (Lambda)", "REST API", "ASP.NET (Razor)"],
+    },
+    {
+      icon: <FaCloud className="inline mr-2" />,
+      title: "クラウド・インフラ",
+      skills: ["Firebase", "AWS", "Docker"],
+    },
+    {
+      icon: <FaTools className="inline mr-2" />,
+      title: "ツール・管理",
+      skills: ["Git / GitHub", "GitLab", "VS Code", "Jira", "Backlog", "WBS"],
+    },
+    {
+      icon: <FaMicrochip className="inline mr-2" />,
+      title: "その他・制御系",
+      skills: ["Objective-C", "C#.NET", "VB.NET"],
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -33,91 +81,64 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Navbar />
-      <main className="pt-24 px-6 max-w-4xl mx-auto text-gray-800 space-y-20">
+      <main className="pt-24 px-6 max-w-5xl mx-auto text-gray-800 space-y-28">
         {/* Hero セクション */}
-        <section id="about" className="text-center space-y-4">
-          <h1 className="text-5xl font-extrabold text-gray-900 leading-tight">
+        <section id="about" className="text-left max-w-3xl mx-auto space-y-6">
+          <h1 className="text-5xl font-extrabold text-gray-900 text-center">
             こんにちは、<span className="text-blue-600">Koki Bandai</span>です
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            React・Vue・TypeScript
-            を中心にWebアプリ開発を行っています。スクラム開発が好きです。
+
+          <Image
+            src="/banner.png"
+            alt="Bandai Koki"
+            width={1000}
+            height={200}
+            className="w-full h-auto mb-8 rounded-xl shadow"
+          />
+
+          <p className="text-lg text-gray-700 leading-relaxed">
+            業界歴は気がつけば8年。
+            <br />
+            はじめはPLCと格闘する日々でしたが、今ではReact・Vue・TypeScriptなどを使って、Webの世界でも元気にやっています。
           </p>
-          <a
-            href="#contact"
-            className="inline-block mt-4 px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition"
-          >
-            お問い合わせはこちら
-          </a>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            制御系の堅牢なシステムからモダンなSPAまで、幅広く対応してきました。
+            <br />
+            要件定義から設計・実装・テスト・運用まで一貫して携わっています。
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            スクラム開発が大好きで、チームの空気が良くなるコードレビューと言葉選びを大切にしています。
+            <br />
+            コードも会話も、読みやすく・伝わりやすくがモットーです。
+          </p>
         </section>
-        <Image
-          src="/banner.png"
-          alt="Bandai Koki"
-          width={1200}
-          height={300}
-          className="w-full h-auto mb-12 rounded-xl"
-        />
 
         {/* スキル一覧 */}
-        <section id="skills" className="space-y-10">
-          <h2 className="text-3xl font-semibold text-center">スキル</h2>
-
-          {/* スキルカテゴリマップ */}
-          {[
-            {
-              title: "🖥 フロントエンド",
-              skills: [
-                "React",
-                "Redux Toolkit",
-                "TypeScript",
-                "Vue 2",
-                "Vue 3",
-                "Next.js",
-                "Tailwind CSS",
-                "HTML / CSS",
-                "JavaScript",
-              ],
-            },
-            {
-              title: "⚙️ バックエンド・API",
-              skills: ["Node.js (Lambda)", "REST API", "ASP.NET (Razor)"],
-            },
-            {
-              title: "☁️ クラウド・インフラ",
-              skills: ["Firebase", "AWS", "Docker"],
-            },
-            {
-              title: "🧰 ツール・管理",
-              skills: [
-                "Git / GitHub",
-                "GitLab",
-                "VS Code",
-                "Jira",
-                "Backlog",
-                "WBS",
-              ],
-            },
-            {
-              title: "🔧 その他・制御系",
-              skills: ["Objective-C", "C#.NET", "VB.NET"],
-            },
-          ].map((category) => (
-            <div key={category.title}>
-              <h3 className="text-xl font-semibold mb-4 text-gray-700">
-                {category.title}
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-                {category.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="bg-white border rounded-xl p-4 shadow hover:shadow-md transition"
-                  >
-                    {skill}
-                  </div>
-                ))}
+        <section id="skills" className="space-y-12">
+          <h2 className="text-3xl font-bold text-center">スキルセット</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {skillCategories.map((category) => (
+              <div
+                key={category.title}
+                className="bg-white rounded-lg shadow p-6"
+              >
+                <h3 className="text-xl font-semibold mb-4 text-blue-700 border-b pb-2">
+                  {category.icon}
+                  {category.title}
+                </h3>
+                <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {category.skills.map((skill) => (
+                    <li
+                      key={skill}
+                      className="bg-blue-50 text-blue-900 px-3 py-2 rounded-md text-sm font-medium border border-blue-200"
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
 
         {/* ポートフォリオ */}
@@ -165,13 +186,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 連絡先（豪華 + アイコン + フォーム） */}
+        {/* 連絡先 */}
         <section
           id="contact"
           className="bg-gradient-to-r from-blue-50 to-blue-100 py-12 px-6 rounded-xl shadow-inner"
         >
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
-            📬 Contact Me
+            <FaEnvelopeOpenText className="inline-block mr-2 mb-1 text-blue-600" />
+            Contact Me
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
             お仕事のご依頼、ご相談、お気軽にご連絡ください。
