@@ -3,6 +3,7 @@ import React from "react";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
 import Image from "next/image";
+import Script from "next/script";
 import {
   FaGithub,
   FaTwitter,
@@ -80,6 +81,18 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-NN1WVXG1RG"
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NN1WVXG1RG');
+        `}
+      </Script>
       <Navbar />
       <main className="pt-24 px-6 max-w-5xl mx-auto text-gray-800 space-y-28">
         {/* Hero セクション */}
