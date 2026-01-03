@@ -126,10 +126,6 @@ export const NebulabSection = () => {
                             </p>
                         </div>
                     </div>
-
-                    <p className="text-xs text-gray-500 mt-4">
-                        ※料金は案件の規模・期間・関わり方で変わるため、まずは目的と状況を聞かせてください。
-                    </p>
                 </div>
             </div>
 

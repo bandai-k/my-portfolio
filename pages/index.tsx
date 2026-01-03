@@ -2,8 +2,8 @@
 import React from "react";
 import Head from "next/head";
 import Script from "next/script";
+import ScrollNavigation from "../components/ScrollNavigation";
 import { Navbar } from "../components/Navbar";
-
 import { HeroSection } from "../components/sections/Home/HeroSection";
 import { NebulabSection } from "../components/sections/Home/NebulabSection";
 import { PortfolioSection } from "../components/sections/Home/PortfolioSection";
@@ -48,34 +48,44 @@ export default function Home() {
 
       <Navbar />
 
-      <main className="pt-24 px-6 max-w-6xl mx-auto text-gray-800 space-y-28">
+      <main className="relative    pt-[var(--header-height)]    px-6    max-w-6xl    mx-auto    text-gray-800    space-y-28  "  >
+
+        {/* ✅ 中央にも背景の気配を載せる（上品・リッチ） */}
+        <div className="pointer-events-none absolute inset-x-0 top-[var(--header-height)] bottom-0 -z-20">
+          <div className="      absolute      left-1/2      top-0      h-full      w-full      max-w-6xl      -translate-x-1/2      rounded-[56px]      bg-white/55      backdrop-blur-[2px]      border border-white/60      shadow-[0_10px_30px_rgba(15,23,42,.06)]  "
+          />
+        </div>
+
         <HeroSection />
 
-        <div className="h-px w-full bg-gray-100" />
+        <div className="hr-fade" />
 
         <NebulabSection />
 
-        <div className="h-px w-full bg-gray-100" />
+        <div className="hr-fade" />
 
         <PortfolioSection />
 
-        <div className="h-px w-full bg-gray-100" />
+        <div className="hr-fade" />
 
         <SkillsSection />
 
-        <div className="h-px w-full bg-gray-100" />
+        <div className="hr-fade" />
 
         <NrtLoftSection />
 
-        <div className="h-px w-full bg-gray-100" />
+        <div className="hr-fade" />
 
         <FutureSection />
 
-        <div className="h-px w-full bg-gray-100" />
+        <div className="hr-fade" />
 
         <ContactSection />
-      </main>
 
+        <div className="hr-fade opacity-60" />
+
+      </main>
+      <ScrollNavigation />
 
       <footer className="bg-gray-100 text-center text-sm text-gray-500 py-8 mt-20">
         &copy; {currentYear} Koki Bandai / NEBULAB. All rights reserved.

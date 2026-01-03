@@ -15,7 +15,7 @@ const sectionIn: Variants = {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
-        transition: { duration: 0.5, ease: easeOutExpo },
+        transition: { duration: 0.55, ease: easeOutExpo },
     },
 };
 
@@ -78,7 +78,6 @@ export const PortfolioSection = () => {
             const slide = track.querySelector<HTMLElement>(`[data-slide="${i}"]`);
             if (!slide) return;
 
-            // ✅ 余計な縦スクロール抑止
             slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
             setActiveIndex(i);
         },
@@ -116,17 +115,18 @@ export const PortfolioSection = () => {
     const canPrev = activeIndex > 0;
     const canNext = activeIndex < works.length - 1;
 
-    // subtle fade の “差” を作る値（強すぎない）
+    // ✅ カード内だけ subtle fade（上品）
     const inactive = { opacity: 0.92, y: 2, filter: "blur(0.5px)" };
     const active = { opacity: 1, y: 0, filter: "blur(0px)" };
 
     return (
-        <section id="portfolio" className="space-y-10 scroll-mt-24">
+        <section id="portfolio" className="relative space-y-10 scroll-mt-24">
             <SectionHeader
                 eyebrow="Works"
                 title="ポートフォリオ"
                 desc="プロダクト志向のUI/UXと、読みやすい設計を意識した制作例。"
             />
+
 
             {shouldReduceMotion ? (
                 <div className="grid grid-cols-1 gap-6">
@@ -152,7 +152,7 @@ export const PortfolioSection = () => {
                                 className={[
                                     "inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm font-semibold shadow-sm transition",
                                     canPrev
-                                        ? "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
+                                        ? "border-gray-200 bg-white text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2"
                                         : "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed",
                                 ].join(" ")}
                                 aria-label="Previous"
@@ -167,7 +167,7 @@ export const PortfolioSection = () => {
                                 className={[
                                     "inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm font-semibold shadow-sm transition",
                                     canNext
-                                        ? "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
+                                        ? "border-gray-200 bg-white text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2"
                                         : "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed",
                                 ].join(" ")}
                                 aria-label="Next"
@@ -197,13 +197,13 @@ export const PortfolioSection = () => {
                                     data-slide={i}
                                     className={[
                                         "snap-start shrink-0",
-                                        // ✅ 幅（大きめ）
+                                        // width (big)
                                         "w-[min(96vw,640px)]",
                                         "md:w-[min(88vw,760px)]",
                                         "lg:w-[min(78vw,900px)]",
                                     ].join(" ")}
                                 >
-                                    {/* ✅ カード内だけ subtle fade */}
+                                    {/* card-only subtle fade */}
                                     <motion.div
                                         animate={isActive ? active : inactive}
                                         transition={{ duration: 0.28, ease: easeOutExpo }}

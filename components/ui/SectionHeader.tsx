@@ -1,55 +1,63 @@
 // components/ui/SectionHeader.tsx
 import React from "react";
-import { motion, type Variants, useReducedMotion } from "framer-motion";
 
 type SectionHeaderProps = {
     eyebrow?: string;
     title: string;
     desc?: string;
+    align?: "center" | "left";
 };
 
-const easeOutExpo = [0.22, 1, 0.36, 1] as const;
-
-const item: Variants = {
-    hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
-    show: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        transition: { duration: 0.5, ease: easeOutExpo },
-    },
-};
-
-/** セクション見出し（統一感＋入場アニメ） */
-export const SectionHeader = ({ eyebrow, title, desc }: SectionHeaderProps) => {
-    const shouldReduceMotion = useReducedMotion();
-
-    // reduce の場合は「アニメなし」で同じ見た目だけ返す
-    if (shouldReduceMotion) {
-        return (
-            <div className="text-center space-y-3">
-                {eyebrow ? (
-                    <p className="text-xs tracking-[0.28em] uppercase text-gray-500">{eyebrow}</p>
-                ) : null}
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">{title}</h2>
-                {desc ? <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">{desc}</p> : null}
-            </div>
-        );
-    }
+/**
+ * セクション見出し（SaaS LP っぽい上品さ）
+ * - うっすらアクセントライン（フェード）
+ * - Eyebrow（小さなラベル）＋タイトル＋説明の統一
+ * - center / left 切り替え可能（デフォルト center）
+ */
+export const SectionHeader = ({
+    eyebrow,
+    title,
+    desc,
+    align = "center",
+}: SectionHeaderProps) => {
+    const isCenter = align === "center";
 
     return (
-        <motion.div
-            variants={item}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.55 }}
-            className="text-center space-y-3"
-        >
+        <div className={isCenter ? "text-center space-y-3" : "text-left space-y-3"}>
+            {/* Accent line */}
+            <div
+                className={[
+                    isCenter ? "mx-auto" : "",
+                    "h-px w-16 bg-gradient-to-r from-transparent via-blue-300/60 to-transparent",
+                ].join(" ")}
+                aria-hidden
+            />
+
             {eyebrow ? (
-                <p className="text-xs tracking-[0.28em] uppercase text-gray-500">{eyebrow}</p>
+                <p
+                    className={[
+                        "text-xs tracking-[0.28em] uppercase font-semibold",
+                        "text-gray-500",
+                    ].join(" ")}
+                >
+                    {eyebrow}
+                </p>
             ) : null}
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">{title}</h2>
-            {desc ? <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">{desc}</p> : null}
-        </motion.div>
+
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+                {title}
+            </h2>
+
+            {desc ? (
+                <p
+                    className={[
+                        "text-base sm:text-lg text-gray-600 leading-relaxed",
+                        isCenter ? "max-w-2xl mx-auto" : "max-w-2xl",
+                    ].join(" ")}
+                >
+                    {desc}
+                </p>
+            ) : null}
+        </div>
     );
 };
