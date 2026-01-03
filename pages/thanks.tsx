@@ -1,22 +1,53 @@
 // pages/thanks.tsx
-import React from "react";
+import Head from "next/head";
 import Link from "next/link";
-import { FaCheckCircle } from "react-icons/fa";
+import { Navbar } from "../components/Navbar";
+import { FaArrowRight, FaCheckCircle } from "react-icons/fa";
 
-export default function Thanks() {
+export default function ThanksPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-blue-50 text-gray-800 px-4">
-      <FaCheckCircle className="text-green-500 text-6xl mb-6" />
-      <h1 className="text-3xl font-bold mb-4">送信ありがとうございます！</h1>
-      <p className="mb-6 text-center max-w-md">
-        メッセージを受け取りました。できるだけ早くご連絡いたします。
-      </p>
-      <Link
-        href="/"
-        className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-      >
-        ホームに戻る
-      </Link>
-    </div>
+    <>
+      <Head>
+        <title>Thanks | bandai-k.site</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+
+      <Navbar />
+
+      <main className="pt-24 px-6 max-w-3xl mx-auto text-gray-800">
+        <section className="mt-10 rounded-3xl border border-gray-200 bg-white shadow-sm p-8 sm:p-10">
+          <div className="text-center space-y-4">
+            <FaCheckCircle className="mx-auto text-4xl text-blue-600" />
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              送信ありがとうございます
+            </h1>
+            <p className="text-gray-600 leading-relaxed">
+              内容を確認し、通常1〜2営業日以内にご返信します。
+              <br />
+              追加情報があれば、この後に追記で送っていただいても大丈夫です。
+            </p>
+
+            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                href="/#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+              >
+                もう一通送る
+                （補足）
+                <FaArrowRight className="opacity-70" />
+              </Link>
+
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
+              >
+                トップへ戻る
+                <FaArrowRight className="opacity-70" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }

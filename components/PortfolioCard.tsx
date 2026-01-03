@@ -1,5 +1,7 @@
-import React from "react";
+// components/PortfolioCard.tsx
 import Image from "next/image";
+import Link from "next/link";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 type Props = {
   title: string;
@@ -8,7 +10,7 @@ type Props = {
   image: string;
   url: string;
   repo?: string;
-  isWIP?: boolean; // 追加
+  isWIP?: boolean;
 };
 
 export const PortfolioCard = ({
@@ -19,51 +21,72 @@ export const PortfolioCard = ({
   url,
   repo,
   isWIP,
-}: Props) => (
-  <div className="border rounded-xl p-6 bg-white shadow hover:shadow-md transition relative">
-    {isWIP && (
-      <span className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded">
-        開発中
-      </span>
-    )}
-    <Image
-      src={image}
-      alt={title}
-      width={800}
-      height={400}
-      className="rounded mb-4"
-    />
-    <h3 className="text-xl font-bold mb-2">{title}</h3>
-    <p className="text-gray-600 mb-2">{description}</p>
-    <div className="flex flex-wrap gap-2 mb-3">
-      {techs.map((tech) => (
-        <span
-          key={tech}
-          className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded"
-        >
-          {tech}
-        </span>
-      ))}
+}: Props) => {
+  return (
+    <div className="group rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+      {/* image */}
+      <div className="relative overflow-hidden rounded-t-2xl">
+        <div className="aspect-[3/2] bg-gray-100">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+        </div>
+
+        {isWIP && (
+          <span className="absolute left-3 top-3 rounded-full bg-gray-900/80 px-3 py-1 text-xs font-semibold text-white">
+            WIP
+          </span>
+        )}
+      </div>
+
+      {/* body */}
+      <div className="p-5 space-y-3">
+        <h3 className="text-lg font-bold text-gray-900 leading-snug">
+          {title}
+        </h3>
+
+        <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+          {description}
+        </p>
+
+        {/* techs */}
+        <ul className="flex flex-wrap gap-1.5">
+          {techs.map((t) => (
+            <li
+              key={t}
+              className="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-medium text-gray-700"
+            >
+              {t}
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <div className="pt-3 flex items-center gap-4">
+          <Link
+            href={url}
+            target="_blank"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:underline"
+          >
+            View
+            <FaExternalLinkAlt className="text-xs" />
+          </Link>
+
+          {repo && (
+            <Link
+              href={repo}
+              target="_blank"
+              className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900"
+            >
+              <FaGithub />
+              Code
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
-    <div className="flex flex-wrap gap-4 items-center">
-      <a
-        href={url}
-        className={`text-blue-600 hover:underline ${isWIP ? "line-through text-gray-400 cursor-not-allowed" : ""}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        公開URL →
-      </a>
-      {repo && !isWIP && (
-        <a
-          href={repo}
-          className="text-blue-500 hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub →
-        </a>
-      )}
-    </div>
-  </div>
-);
+  );
+};
